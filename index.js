@@ -88,15 +88,21 @@ function makeSmartPerson(name) {
       return `Hello, my name is ${this.name}.`;
     }
   };
+
+  return obj;
 }
 
-/*
 // ⭐️ Example Test Data ⭐️
 
 var inventory = [
   { id: 1, car_make: "Lincoln", car_model: "Navigator", car_year: 2009 },
   { id: 2, car_make: "Mazda", car_model: "Miata MX-5", car_year: 2001 },
-  { id: 3, car_make: "Land Rover", car_model: "Defender Ice Edition", car_year: 2010 },
+  {
+    id: 3,
+    car_make: "Land Rover",
+    car_model: "Defender Ice Edition",
+    car_year: 2010
+  },
   { id: 4, car_make: "Honda", car_model: "Accord", car_year: 1983 },
   { id: 5, car_make: "Mitsubishi", car_model: "Galant", car_year: 1990 },
   { id: 6, car_make: "Honda", car_model: "Accord", car_year: 1995 },
@@ -109,8 +115,8 @@ var inventory = [
   { id: 13, car_make: "Chevrolet", car_model: "Cavalier", car_year: 1997 },
   { id: 14, car_make: "Dodge", car_model: "Ram Van 1500", car_year: 1999 }
   /// ... Truncated
-]
-*/
+];
+
 /**
  * ### Example Array Challenge:
  *
@@ -144,7 +150,10 @@ function get3rdCar(inventory) {
  * it will return `This is a Lincoln Navigator`.
  */
 function getCarInfoByIndex(inventory, index) {
-  /* code here */
+  const make = inventory[index].car_make;
+  const model = inventory[index].car_model;
+
+  return `This is a ${make} ${model}`;
 }
 
 /**
@@ -158,8 +167,9 @@ function getCarInfoByIndex(inventory, index) {
  * For example, if getLastCarInfo is invoked passing the inventory inside /data/inventory.js,
  * it will return `This is a Lincoln Town Car`.
  */
-function getLastCarInfo(/* code here */) {
-  /* code here */
+function getLastCarInfo(arr) {
+  const lastCar = arr[arr.length - 1];
+  return `This is a ${lastCar.car_make} ${lastCar.car_model}`;
 }
 
 /**
