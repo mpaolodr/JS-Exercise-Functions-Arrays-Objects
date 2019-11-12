@@ -197,7 +197,32 @@ function getCarInfoById(arr, id) {
  *     (1) an array which is an inventory of cars like the one inside /data/inventory.js.
  * sortCarInventory returns an inventory that is sorted by car_model, ascending [A-Z].
  */
-function sortCarInventory(arr) {}
+function sortCarInventory(arr) {
+  // const carModels = arr.map(function(car) {
+  //   return car.car_model;
+  // });
+  const carModels = [];
+
+  for (let i = 0; i < arr.length; i++) {
+    carModels.push(arr[i].car_model);
+  }
+
+  const sortModels = carModels.sort();
+
+  let sortedInventory = [];
+
+  for (let i = 0; i < sortModels.length; i++) {
+    for (let j = 0; j < arr.length; j++) {
+      if (sortModels[i] === arr[j].car_model) {
+        sortedInventory.push(arr[j]);
+      }
+    }
+  }
+
+  return sortedInventory;
+}
+
+console.log(sortCarInventory(inventory));
 
 /**
  * ### Challenge `getModelYears`
@@ -218,8 +243,6 @@ function getModelYears(arr) {
   return carYears;
 }
 
-console.log(getModelYears(inventory));
-
 /**
  * ### Challenge `getOlderCars`
  *
@@ -236,26 +259,32 @@ function getOlderCars(arr, maxYear) {
   //array of cars < maxYear
   let olderCars = [];
 
-  arr.forEach(function(cars) {
-    // if (cars.car_year < maxYear) {
-    //   olderCars.push(cars);
-    // } else if ()
+  // arr.forEach(function(cars) {
+  //   if (maxYear <= 0) {
+  //     return olderCars;
+  //   } else if (maxYear <= 3000) {
+  //     return olderCars.push(cars);
+  //   } else if (maxYear > 0 && maxYear <= 2020) {
+  //     if (cars.car_year < maxYear) {
+  //       return olderCars.push(cars);
+  //     }
+  //   }
+  // });
 
-    //maxYear <=0
-
+  for (let i = 0; i < arr.length; i++) {
     if (maxYear <= 0) {
       return olderCars;
-    } else if (maxYear >= 3000) {
-      olderCars.push(cars);
-    } else if (maxYear > 0 && maxYear < 3000) {
-      olderCars.push(cars);
+    } else if (maxYear <= 3000) {
+      return olderCars.push(arr[i]);
+    } else if (maxYear > 0 && maxYear <= 2020) {
+      if (arr[i].car_year < maxYear) {
+        return olderCars.push(arr[i]);
+      }
     }
-  });
+  }
 
   return olderCars;
 }
-
-console.log(getOlderCars(inventory, 5000));
 
 /**
  * ### Challenge `getGermanCars`
@@ -285,8 +314,6 @@ function getGermanCars(arr) {
   return germanCars;
 }
 
-console.log(getGermanCars(inventory));
-
 /**
  * ### Challenge refactor to arrow functions
  *
@@ -305,15 +332,9 @@ console.log(getGermanCars(inventory));
  *   return num * 2
  * }
  */
-const sum = (a, b) => {
-  return a + b;
-}; // code here!
-const addFive = num => {
-  return num + 5;
-}; // code here!
-const argTimesTwo = num => {
-  return num * 2;
-}; // code here!
+const sum = (a, b) => a + b; // code here!
+const addFive = num => num + 5; // code here!
+const argTimesTwo = num => num * 2; // code here!
 
 /**
  * ### Challenge `carMaker`
