@@ -222,8 +222,6 @@ function sortCarInventory(arr) {
   return sortedInventory;
 }
 
-console.log(sortCarInventory(inventory));
-
 /**
  * ### Challenge `getModelYears`
  *
@@ -259,26 +257,19 @@ function getOlderCars(arr, maxYear) {
   //array of cars < maxYear
   let olderCars = [];
 
-  // arr.forEach(function(cars) {
-  //   if (maxYear <= 0) {
-  //     return olderCars;
-  //   } else if (maxYear <= 3000) {
-  //     return olderCars.push(cars);
-  //   } else if (maxYear > 0 && maxYear <= 2020) {
-  //     if (cars.car_year < maxYear) {
-  //       return olderCars.push(cars);
-  //     }
-  //   }
-  // });
+  //if maxYear <= 0;
+  if (maxYear <= 0) {
+    return olderCars;
+  }
 
-  for (let i = 0; i < arr.length; i++) {
-    if (maxYear <= 0) {
-      return olderCars;
-    } else if (maxYear <= 3000) {
-      return olderCars.push(arr[i]);
-    } else if (maxYear > 0 && maxYear <= 2020) {
-      if (arr[i].car_year < maxYear) {
-        return olderCars.push(arr[i]);
+  if (maxYear <= 3000 && maxYear >= 1991) {
+    olderCars = [...arr];
+  }
+
+  if (maxYear <= 1990) {
+    for (let i = 0; i < arr.length; i++) {
+      if (arr[i].car_year <= maxYear) {
+        olderCars.push(arr[i]);
       }
     }
   }
