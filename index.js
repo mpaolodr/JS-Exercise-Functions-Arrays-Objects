@@ -291,17 +291,27 @@ function getOlderCars(arr, maxYear) {
 function getGermanCars(arr) {
   let germanCars = [];
 
-  arr.forEach(function(car) {
-    if (
-      car.car_make === "Audi" ||
-      car.car_make === "Mercedes-Benz" ||
-      car.car_make === "Volkswagen" ||
-      car.car_make === "BMW"
-    ) {
-      germanCars.push(car);
-    }
-  });
+  // arr.forEach(function(car) {
+  //   if (
+  //     car.car_make === "Audi" ||
+  //     car.car_make === "Mercedes-Benz" ||
+  //     car.car_make === "Volkswagen" ||
+  //     car.car_make === "BMW"
+  //   ) {
+  //     germanCars.push(car);
+  //   }
+  // });
 
+  for (let i = 0; i < arr.length; i++) {
+    if (
+      arr[i].car_make === "Audi" ||
+      arr[i].car_make === "Mercedes-Benz" ||
+      arr[i].car_make === "Volkswagen" ||
+      arr[i].car_make === "BMW"
+    ) {
+      germanCars.push(arr[i]);
+    }
+  }
   return germanCars;
 }
 
